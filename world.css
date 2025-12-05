@@ -1,108 +1,207 @@
-/* Basic styling for the World Database Lookup */
+/* --------------------------------------------------------------------
+   world.css - Customized Page Styling
+   -------------------------------------------------------------------- */
+
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Use the new font */
     margin: 0;
-    padding: 20px;
-    background-color: #f5f5f5;
+    padding: 0; /* Removed extra padding for a cleaner look */
+    background-color: #eef2f7; /* Light grey/blue background */
+    color: #333;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #3b82f6; /* A clean blue color */
     color: white;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 header h1 {
     margin: 0;
+    font-weight: 300; /* Lighter font weight for a modern look */
+    letter-spacing: 1px;
 }
 
 main {
     max-width: 900px;
     margin: 0 auto;
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* More pronounced box shadow for depth */
 }
 
 #controls {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    display: flex; /* Use flexbox for aligned controls */
+    align-items: center;
+    gap: 10px; /* Space between items */
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8fafc; /* Very light background for controls */
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
 }
 
 label {
-    font-weight: bold;
-    margin-right: 10px;
+    font-weight: 500;
+    color: #475569;
 }
 
 #country {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 250px;
-    margin-right: 10px;
+    flex-grow: 1; /* Allows the input to take up available space */
+    padding: 10px 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#country:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
 }
 
 button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
+    padding: 10px 20px;
+    background-color: #3b82f6; /* Blue primary color */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    margin-right: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #2563eb; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(1px); /* Pressed effect */
 }
 
 #lookup-cities {
-    background-color: #2196F3;
+    background-color: #64748b; /* Different color for cities lookup */
 }
 
 #lookup-cities:hover {
-    background-color: #0b7dda;
+    background-color: #475569;
 }
+
+/* --------------------------------------------------------------------
+   Table Styling for Results (FIXED)
+   -------------------------------------------------------------------- */
 
 #result {
     margin-top: 20px;
+    overflow-x: auto; /* Allows horizontal scrolling for tables on small screens */
 }
 
-table {
+#result table {
+    min-width: 600px;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Added border to the entire table for a complete box look */
+    border: 1px solid #e2e8f0; 
 }
 
-table thead {
-    background-color: #4CAF50;
+#result th, #result td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+    /* FIX: Added vertical border on the right of each cell */
+    border-right: 1px solid #e2e8f0;
+}
+
+/* FIX: Remove the right border from the last column in both header and body rows */
+#result th:last-child, #result td:last-child {
+    border-right: none;
+}
+
+#result thead {
+    background-color: #1e293b; /* Dark header background */
     color: white;
 }
 
-table th {
-    padding: 12px;
-    text-align: left;
-    font-weight: bold;
+#result th {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
 }
 
-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #ddd;
+#result tbody tr:nth-child(even) {
+    background-color: #f8fafc; /* Zebra striping */
 }
 
-table tbody tr:hover {
-    background-color: #f5f5f5;
+#result tbody tr:hover {
+    background-color: #e0f2fe; /* Light blue row hover effect */
+    transition: background-color 0.2s;
 }
 
-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Style for message/error text */
+#result p {
+    padding: 15px;
+    background-color: #fef3c7;
+    border: 1px solid #fcd34d;
+    color: #92400e;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------
+   Media Query for Mobile Devices
+   -------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    /* Stack controls vertically on screens 600px wide or less */
+    #controls {
+        flex-direction: column;
+        align-items: stretch; /* Stretch children to fill width */
+        padding: 15px;
+        gap: 15px;
+    }
+
+    /* Make the label take up the full width */
+    #controls label {
+        align-self: flex-start;
+    }
+
+    /* Make the input take up the full width */
+    #country {
+        width: 100%;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    /* Make buttons take up the full width */
+    button {
+        width: 100%;
+    }
+
+    /* Reduce main padding */
+    main {
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+    }
+
+    /* Ensure body doesn't add awkward horizontal padding */
+    body {
+        padding: 0;
+    }
 }

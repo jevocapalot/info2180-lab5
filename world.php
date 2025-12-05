@@ -42,11 +42,12 @@ if ($lookup === 'cities') {
     </table>
     <?php
 } else {
-    // SQL query to get countries
+    // SQL query to get countries (SELECT * FROM countries...)
     $stmt = $conn->prepare("SELECT * FROM countries WHERE name LIKE :country");
     $stmt->execute(['country' => "%$country%"]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
+    <!-- START of HTML table output -->
     <table>
         <thead>
             <tr>
@@ -59,6 +60,7 @@ if ($lookup === 'cities') {
         <tbody>
         <?php foreach ($results as $row): ?>
             <tr>
+                <!-- Outputting the required fields -->
                 <td><?= htmlspecialchars($row['name']); ?></td>
                 <td><?= htmlspecialchars($row['continent']); ?></td>
                 <td><?= htmlspecialchars($row['independence_year']); ?></td>
