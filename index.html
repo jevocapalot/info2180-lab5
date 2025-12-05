@@ -9,20 +9,24 @@
 		<!-- Bumping the version number to force a reload of the CSS. -->
 		<link href="world.css?v=3" type="text/css" rel="stylesheet" />
 
-		<!-- you write this -->
+		<!-- Link to the JavaScript file -->
 		<script src="world.js" type="text/javascript"></script>
 	</head>
 
 	<body>
 		<header>
-			<h1>World Database Lookup</h1>
+			<h1>
+                <!-- The icon will be wrapped in a span for easy styling and animation -->
+                <span id="globe-icon">🌐</span>
+                World Database Lookup
+            </h1>
 		</header>
 
 		<main>
 			<div id="controls">
 				<label for="country">Country:</label>
 				<input id="country" type="search" name="country" placeholder="Enter country name" />
-				<button id="lookup">Lookup</button>
+				<button id="lookup">Lookup Country</button>
 				<button id="lookup-cities">Lookup Cities</button> </div>
 			</div>
 			

@@ -26,7 +26,31 @@ header h1 {
     margin: 0;
     font-weight: 300; /* Lighter font weight for a modern look */
     letter-spacing: 1px;
+    /* NEW: Use flexbox to align the icon and text horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between the icon and the text */
 }
+
+/* --------------------------------------------------------------------
+   Spinning Globe Animation
+   -------------------------------------------------------------------- */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#globe-icon {
+    font-size: 1.5em; /* Make the globe a bit bigger than the text */
+    /* Apply the animation: spin for 5 seconds, linear, infinitely */
+    animation: spin 5s linear infinite; 
+}
+
+/* --------------------------------------------------------------------
+   Remaining Styles
+   -------------------------------------------------------------------- */
 
 main {
     max-width: 900px;
@@ -99,7 +123,7 @@ button:active {
 }
 
 /* --------------------------------------------------------------------
-   Table Styling for Results (FIXED)
+   Table Styling for Results
    -------------------------------------------------------------------- */
 
 #result {
@@ -116,7 +140,6 @@ button:active {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     border-radius: 8px;
     overflow: hidden;
-    /* Added border to the entire table for a complete box look */
     border: 1px solid #e2e8f0; 
 }
 
@@ -124,11 +147,9 @@ button:active {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #f1f5f9;
-    /* FIX: Added vertical border on the right of each cell */
     border-right: 1px solid #e2e8f0;
 }
 
-/* FIX: Remove the right border from the last column in both header and body rows */
 #result th:last-child, #result td:last-child {
     border-right: none;
 }
